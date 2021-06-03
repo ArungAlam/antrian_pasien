@@ -1,4 +1,4 @@
-####  Antrian pasien
+####  ***--Antrian pasien--***
 
 ##### login : Administator
 ##### pass  : admin123
@@ -6,7 +6,7 @@
 ##### DB_USER  : its
 ##### DB_PASS  : itsthok
 
-#### System Requiredment
+#### ***--System Requiredment--***
 ##### PHP 5.6
 ##### PostgreSql v.9++
 ##### Boostraps 3
