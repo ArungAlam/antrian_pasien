@@ -457,6 +457,7 @@ if ($_POST['simpan']) {
     </script> -->
 <?php
   }
+  header("Location: antri_tambah.php");
 }
     $sql = "select dep_konf_reg_no_rm_depan, dep_konf_reg_banyak, dep_konf_reg_ulang, dep_kode_prop ,dep_panjang_kode_pasien from global.global_departemen";
     $konf = $dtaccess->Fetch($sql);
