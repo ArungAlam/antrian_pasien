@@ -125,6 +125,13 @@ if ($noantri < $konf["dep_no_urut_antrian_loket_satu"]) $noantri = $noantri + $k
     left: 0;
     color: #fff;
   }
+  .btn-loket{
+    font-size:2em; 
+    width: 75%;
+    height:75px; 
+    margin-top:50px;
+    box-shadow: 0px 10px 10px #086c39;
+  }
 </style>
 <script>
 
@@ -153,7 +160,7 @@ function pindah() {
           <div>
             <div align="center" class="nomor">
               <h3>PASIEN BARU</h3>
-              <a href="cetakantrian.php" title="Pasien Lama" onclick="pindah()" target="_BLANK"><button type="button" name="btnLoketSatu" id="btnLoketSatu" style="font-size:2em; width: 100%;height:75px; margin-top:50px;">PASIEN BARU KLIK DISINI</button></a>
+              <a href="cetakantrian.php" title="Pasien Lama" onclick="pindah()" target="_BLANK"><button type="button" name="btnLoketSatu"  class="btn-loket" id="btnLoketSatu" > KLIK DISINI</button></a>
             </div>
           </div>
         </td>
@@ -163,7 +170,7 @@ function pindah() {
           <div>
             <div align="center" class="nomor">
               <h3>PASIEN LAMA</h3>
-              <a href="pasien_lama.php" title=""><button type="button" style="font-size:2em; width: 100%;height:75px; margin-top:50px;">PASIEN LAMA KLIK DISINI</button></a>
+              <a href="pasien_lama.php" title=""><button type="button" class="btn-loket" >KLIK DISINI</button></a>
             </div>
           </div>
         </td>
@@ -173,7 +180,8 @@ function pindah() {
           <div>
             <div align="center" class="nomor">
               <h3>REGISTRASI ONLINE</h3>
-              <a href="registrasi_online.php" title=""><button type="button" style="font-size:2em; width: 100%;height:75px; margin-top:50px; ">REGISTRASI ONLINE KLIK DISINI</button></a>
+              <a href="registrasi_online.php" title=""><button type="button" 
+              class="btn-loket" >KLIK DISINI</button></a>
             </div>
           </div>
         </td>
@@ -183,7 +191,7 @@ function pindah() {
           <div>
             <div align="center" class="nomor">
               <h3>PASIEN KONTROL</h3>
-              <a href="pasien_kontrol.php" title=""><button type="button" style="font-size:2em; width: 100%;height:75px; margin-top:50px;">PASIEN KONTROL KLIK DISINI</button></a>
+              <a href="pasien_kontrol.php" title=""><button type="button"  class="btn-loket"> KLIK DISINI</button></a>
             </div>
           </div>
         </td>
