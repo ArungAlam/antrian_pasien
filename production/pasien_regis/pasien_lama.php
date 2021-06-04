@@ -206,7 +206,7 @@ if ($_POST['simpan']) {
     $dbValue[11] = QuoteValue(DPE_CHAR, $depId);
     $dbValue[12] = QuoteValue(DPE_CHAR, $_POST["dokter"]);
     $dbValue[13] = QuoteValue(DPE_CHAR, $byrId);
-    $dbValue[14] = QuoteValue(DPE_CHAR, 2);
+    $dbValue[14] = QuoteValue(DPE_CHAR, $_POST["poli_klinik"]);
     $dbValue[15] = QuoteValue(DPE_NUMERIC, $diff->y);
     $dbValue[16] = QuoteValue(DPE_NUMERIC, $diff->m);
     $dbValue[17] = QuoteValue(DPE_NUMERIC, $diff->d);
