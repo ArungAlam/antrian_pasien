@@ -103,7 +103,7 @@ if ($noantri < $konf["dep_no_urut_antrian_loket_satu"]) $noantri = $noantri + $k
   }
 
   .nomor {
-    width: 50%;
+    width: 80%;
     height: 250px;
     padding: 2px;
     margin-bottom: 13px;
@@ -124,6 +124,7 @@ if ($noantri < $konf["dep_no_urut_antrian_loket_satu"]) $noantri = $noantri + $k
     bottom: 0;
     left: 0;
     color: #fff;
+    text-shadow: 2px 3px 4px rgba(31, 31, 31, 0.7);
   }
   .btn-loket{
     font-size:2em; 
@@ -164,8 +165,7 @@ function pindah() {
             </div>
           </div>
         </td>
-      </tr>
-      <tr>
+      
         <td align="center" width="50%">
           <div>
             <div align="center" class="nomor">
@@ -185,8 +185,6 @@ function pindah() {
             </div>
           </div>
         </td>
-      </tr>
-      <tr>
         <td align="center">
           <div>
             <div align="center" class="nomor">
