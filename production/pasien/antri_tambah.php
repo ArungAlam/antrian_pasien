@@ -347,8 +347,8 @@
       }
 
       <?php if($cetak_antrian=="y"){ ?>
-      		// BukaStatWindow('cetakantrian.php?id=<?php echo $byrId;?>','No Antrian');
-					$.getJSON('cetakantrian1.php?id=<?php echo $byrId;?>');
+      		 BukaStatWindow('cetakantrian.php?id=<?php echo $byrId;?>','No Antrian');
+					// $.getJSON('cetakantrian1.php?id=<?php echo $byrId;?>');
       <?php } ?> 
 
       <?php if($cetak_sms=="y"){ ?>
