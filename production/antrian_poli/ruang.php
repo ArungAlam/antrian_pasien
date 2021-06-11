@@ -4,11 +4,9 @@
      require_once($LIB."login.php");
      require_once($LIB."encrypt.php");
      require_once($LIB."datamodel.php");
-     require_once($LIB."tampilan.php");
      require_once($LIB."currency.php");
 
   /**INITIAL LIBRARY */
-    $view = new CView($_SERVER['PHP_SELF'],$_SERVER['QUERY_STRING']);
     $dtaccess = new DataAccess();  
     $auth = new CAuth();
     $table = new InoTable("table","100%","left");

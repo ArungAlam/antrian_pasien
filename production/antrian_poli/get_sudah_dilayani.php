@@ -6,9 +6,7 @@
   require_once($LIB."currency.php");
   require_once($LIB."dateLib.php");
   require_once($LIB."expAJAX.php");
-  require_once($LIB."tampilan.php");
 
-  $view = new CView($_SERVER['PHP_SELF'],$_SERVER['QUERY_STRING']);
   $dtaccess = new DataAccess();
   $enc = new textEncrypt();     
   $auth = new CAuth();
