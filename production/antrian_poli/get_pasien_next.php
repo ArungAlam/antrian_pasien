@@ -6,8 +6,7 @@
   require_once($LIB."currency.php");
   require_once($LIB."dateLib.php");
 
-  $view = new CView($_SERVER['PHP_SELF'],$_SERVER['QUERY_STRING']);
-  
+  $dtaccess = new DataAccess();
   $skr = date('Y-m-d');
 
   /***
