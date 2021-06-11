@@ -8,14 +8,7 @@
 
   /**INITIAL LIBRARY */
     $dtaccess = new DataAccess();  
-    $auth = new CAuth();
-    $table = new InoTable("table","100%","left");
-    $depNama = $auth->GetDepNama();
-    $depId = $auth->GetDepId();
-    $userName = $auth->GetUserName();
-    $userData = $auth->GetUserData();
-    $userId = $auth->GetUserId();
-    $thisPage = "pengunaan_bed.php";
+    
 
 
   /**DEKLARASI AWAL */

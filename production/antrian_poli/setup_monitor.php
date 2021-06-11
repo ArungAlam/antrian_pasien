@@ -6,17 +6,7 @@
      require_once($LIB."datamodel.php");
 
      $dtaccess = new DataAccess();  
-     $auth = new CAuth();
-     $table = new InoTable("table","100%","left");
-     $depNama = $auth->GetDepNama();
-	   $depId = $auth->GetDepId();
-	   $userName = $auth->GetUserName();
-	   $userData = $auth->GetUserData();
-  	 $userId = $auth->GetUserId();
-     $thisPage = "report_pasien.php";
-     $poliId = $auth->IdPoli();
-     
-  
+    
     if($_POST['btnLanjut']){
 
       /* update ruangan  */

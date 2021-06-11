@@ -7,7 +7,6 @@
   require_once($LIB."dateLib.php");
 
   $dtaccess = new DataAccess();
-  $depId = $auth->GetDepId();
 
 
   $sql ="select a.id_dokter , b.usr_name

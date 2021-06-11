@@ -8,14 +8,7 @@
   require_once($LIB."expAJAX.php");
 
   $dtaccess = new DataAccess();
-  $enc = new textEncrypt();     
-  $auth = new CAuth();
-  $depId = $auth->GetDepId();
-  $depLowest = $auth->GetDepLowest();
-  $tahunTarif = $auth->GetTahunTarif();
-  $depNama = $auth->GetDepNama();
-  $userName = $auth->GetUserName();
-
+  
   /***
    * status_pasien_tabel
       A  = sedang antri

@@ -7,13 +7,7 @@
   require_once($LIB."dateLib.php");
 
   $dtaccess = new DataAccess();
-  $enc = new textEncrypt();     
-  $auth = new CAuth();
-  $depId = $auth->GetDepId();
-  $depLowest = $auth->GetDepLowest();
-  $tahunTarif = $auth->GetTahunTarif();
-  $depNama = $auth->GetDepNama();
-  $userName = $auth->GetUserName();
+  
   $skr = date('Y-m-d');
 
   /***

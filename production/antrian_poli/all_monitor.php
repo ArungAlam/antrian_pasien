@@ -5,25 +5,10 @@
  require_once($LIB."encrypt.php");
  require_once($LIB."datamodel.php");
  require_once($LIB."currency.php");
- require_once($LIB."tampilan.php");
- require_once($LIB."expAJAX.php");
 
 /** INITIAL LIBRARY  */
- $view = new CView($_SERVER['PHP_SELF'],$_SERVER['QUERY_STRING']);
  $dtaccess = new DataAccess();
- $enc = new textEncrypt();     
- $auth = new CAuth();
- $table = new InoTable("table","100%","left");
- $tables = new inoTable("table","800","left");
- $depId = $auth->GetDepId();
- $depNama = $auth->GetDepNama();
- $userName = $auth->GetUserName(); 
- $depLowest = $auth->GetDepLowest();
- $tahunTarif = $auth->GetTahunTarif();
-
  $id_ruang = $_GET['id'];
-
-
 
  ?>
 
