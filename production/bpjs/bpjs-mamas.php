@@ -34,15 +34,15 @@
 
   $response = curl_exec($ch);
 
-  // echo "<pre>";
-  // print_r (json_decode($response));
-  // echo "</pre>";
-
-  $isi = json_decode($response, true);
-
   echo "<pre>";
-  print_r ($isi);
+  print_r (json_decode($response));
   echo "</pre>";
+
+  // $isi = json_decode($response, true);
+
+  // echo "<pre>";
+  // print_r ($isi);
+  // echo "</pre>";
 
   // if ($isi['metaData']['code'] == 200) {
   //   echo 'Nama = '.$isi['response']['peserta']['nama'];

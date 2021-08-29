@@ -19,10 +19,10 @@
     $userId = $auth->GetUserId();
     $thisPage = "pengunaan_bed.php";
 
-    $jenis[1] = 'BPJS';
-    $jenis[2] = 'PRIORITY';
-    $jenis[3] = 'ASURANSI';
-    $jenis[4] = 'JKN MOBILE';
+    $jenis[1] = 'PASIEN BARU';
+    // $jenis[2] = 'PRIORITY';
+    // $jenis[3] = 'ASURANSI';
+    $jenis[4] = 'PASIEN KONTROL';
 
   if ($_GET['id']) {
   	$sql = "UPDATE klinik.klinik_reg_antrian_reguler SET antri_aktif = 'y', reg_panggil = 'n', waktu_panggil = '".date('Y-m-d H:i:s')."', id_loket = '".$_GET['loket']."' WHERE reg_antri_id = ".QuoteValue(DPE_CHAR, $_GET["id"]);
@@ -73,10 +73,10 @@
 											<div class="col-md-8">
 												<select class="form-control"  name="id_poli" id="id_poli">
 													<option value="0" <?php if($id_poli==0){ echo "selected "; } ?>  >Semua</option>
-													<option value="1"  <?php if($id_poli==1){ echo "selected "; } ?>  >BPJS</option>
-													<option value="2"  <?php if($id_poli==2){ echo "selected "; } ?> >Priority</option>
-													<option value="3" <?php if($id_poli==3){ echo "selected "; } ?> >Asuransi</option>
-													<option value="4" <?php if($id_poli==4){ echo "selected "; } ?> >Online</option>
+													<option value="1"  <?php if($id_poli==1){ echo "selected "; } ?>  >PASIEN BARU</option>
+													<!-- <option value="2"  <?php if($id_poli==2){ echo "selected "; } ?> >Priority</option>
+													<option value="3" <?php if($id_poli==3){ echo "selected "; } ?> >Asuransi</option> -->
+													<option value="4" <?php if($id_poli==4){ echo "selected "; } ?> >PASIEN KONTROL</option>
 												</select>
 										 	</div>
 										 </div>
@@ -98,7 +98,7 @@
                         <?php if ($data): ?>
                           <?php foreach ($data as $value): ?>
                             <tr>
-                              <td><?=$value['reg_antri_suara'].sprintf("%03d",$value['reg_antri_nomer'])?></td>
+                              <td><?=sprintf("%03d",$value['reg_antri_nomer'])?></td>
                               <td><?=$jenis[$value['id_poli']]?></td>
                               <td><a href="#" title="panggil" onclick="panggil(<?= $value['reg_antri_id'] ?>, <?= $_GET['id_loket'] ?>)"><center><i class="fa fa-bell"></i></center></a></td>
                             </tr>
@@ -133,7 +133,7 @@
                         <?php if ($data_sudah): ?>
                           <?php foreach ($data_sudah as $value): ?>
                             <tr>
-                              <td><?=$value['reg_antri_suara'].sprintf("%03d",$value['reg_antri_nomer'])?></td>
+                              <td><?=sprintf("%03d",$value['reg_antri_nomer'])?></td>
                               <td><?=$jenis[$value['id_poli']]?></td>
                               <td><a href="#" title="panggil" onclick="panggil(<?= $value['reg_antri_id'] ?>, <?= $_GET['id_loket'] ?>)"><center><i class="fa fa-bell"></i></center></a></td>
                             </tr>

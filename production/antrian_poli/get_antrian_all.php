@@ -30,9 +30,10 @@ $sql = "select c.usr_name ,d.poli_nama,d.poli_id ,usr_id,ruangan_nama
              left join global.global_auth_user c on c.usr_id = a.id_dokter
              left join global.global_auth_poli d on d.poli_id = a.id_poli
              left join klinik.klinik_ruangan e on e.ruangan_id = a.id_ruangan
-             where a.id_ruangan is not null";
+             where a.id_ruangan is not null
+             
+             order by ruangan_nama";
 $Ruang = $dtaccess->FetchAll($sql);
-
 $jml_ruang = count($Ruang);
 $data = [];
 for ($i = 0; $i < $jml_ruang; $i++) {
@@ -54,7 +55,7 @@ for ($i = 0; $i < $jml_ruang; $i++) {
   $data[$i]['call'] = $no_panggil['no_antrian_pasien'];
   $data[$i]['next'] = $no_next['no_antrian_pasien'];
   $data[$i]['poli'] = $Ruang[$i]['poli_nama'];
-  $data[$i]['dokter'] = $Ruang[$i]['usr_name'];
+  $data[$i]['dokter'] = substr($Ruang[$i]['usr_name'],0,20);
   $data[$i]['ruang'] = $Ruang[$i]['ruangan_nama'];
 }
 

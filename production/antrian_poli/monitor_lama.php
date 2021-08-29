@@ -22,135 +22,66 @@
 
 <!DOCTYPE html>
 <html lang="en">
-    <link rel="stylesheet" type="text/css" href="assets/css/box_exp.css">
-    <link rel="stylesheet" href="assets/css/adminlte.min.css">
+    <link rel="stylesheet" type="text/css" href="box.css">
+    <link rel="stylesheet" type="text/css" href="bootstraps/bootstrap.min.css">
     <body >
-    <div class="col-md-12">
-        <div class="headline">
-          <div class=row>
-            <div class="col-md-2">
-              <img src="assets/img/logo_exp.png" alt="" class="gambar-logo">
-            </div>
-            <div class="col-md-2">
-              <div class="col">
-                 <a class="logo-name">EXPPRESSA</a>
-              </div>
-              <div class="col">
-                 <a class="logo-name-detail">IT HEALTH CARE</a>
-              </div>
-            </div>
-            <div class="col-md-3 offset-md-3 ">
-              <div class="row">
-                <div class="col-md-11 text-right">
-                  <a class="headline-poli" id="nama_poli">POLI UMUM </a>
-                </div>
-                <div class="col-md-1">
-                  <div class="verline"></div>
-                </div>
-              </div>
-            </div>
-            
-
-            <div class="col-md-2">
-              <div class="col">
-               <a class="headline-poli">00:00:00</a>
-              </div>
-              <div class="col">
-               <a class="headline-tgl">15 AGUSTUS 2021</a>
-              </div>
-            </div>
-
-              
-
-          </div>
-        </div>   
-      </div>
-      </div>
+        
+           
     <div class="container">
-      <!-- headline -->
-      
       <div class="row">
-      <div class="col-md">
-        <div class="papan besar text-center">
-            <div class="papan-atas">
-              <h1 id="no_antrian">012</h1>
-            </div>
-            <div class="papan-bawah">
-              <h4 ><?=$ruang['nama']?></h4>
-              <h4 id="nama_dokter"></h4>
-            </div>
-          </div>
+        
+        <div class="col-md align-items-center">
+          <h2 class="down"><?=$ruang['nama']?></h2>
+          <br/>
+          <h2 id="nama_poli">Tidak ada</h2>
         </div>
         <div class="col-md">
-                    <video controls
-                width="100%"
-                height="100%"
-                muted>
-                <source src="/media/cc0-videos/flower.webm"
-                        type="video/webm">
-                <source src="/media/cc0-videos/flower.mp4"
-                        type="video/mp4">
-                This browser does not support the HTML5 video element.
-            </video>
+              <img src="img-foto" id="foto_dokter" class="gambar">
         </div>
       </div>
     </div>
-      
+      <div class="col-md-12 dokter text-center">
+         <h2 id="nama_dokter">Tidak ada</h2>
+      </div>
       <div class="col-md-12 down">
         <div class="row">
           <div class="col-md text-center">
-            <div class="papan">
-              <div class="papan-atas">
-                <h4>012</h4>
-              </div>
-              <div class="papan-bawah">
-                <h6 id="no_antrian">ruangan</h6>
-              </div>
+            <div class="col bulat">
+              <h4>Antrian saat ini</h4>
+            </div>
+            <div class="col bulat">
+              <h4 id="no_antrian">kosong</h4>
             </div>
           </div>
+
           <div class="col-md text-center">
-            <div class="papan">
-              <div class="papan-atas">
-                <h4>012</h4>
-              </div>
-              <div class="papan-bawah">
-                <h6 id="no_antrian" >Rungan</h6>
-                <h6 id="no_antrian">Dr.A</h6>
-              </div>
+            <div class="col bulat">
+              <h4>Antrian Berikutnya</h4>
+            </div>
+            <div class="col bulat">
+              <h4 id="no_antrian_next">kosong</h4>
             </div>
           </div>
+
           <div class="col-md text-center">
-            <div class="papan">
-              <div class="papan-atas">
-                <h4>012</h4>
-              </div>
-              <div class="papan-bawah">
-                <h6 id="no_antrian">ruangan</h6>
-              </div>
+            <div class="col bulat">
+              <h4>Selesai di layani</h4>
             </div>
-          </div>
-          <div class="col-md text-center">
-            <div class="papan">
-              <div class="papan-atas">
-                <h4>012</h4>
-              </div>
-              <div class="papan-bawah">
-                <h6 id="no_antrian">ruangan</h6>
-              </div>
+            <div class="col bulat">
+              <h4 id="jml_selesai">kosong</h4>
             </div>
           </div>
 
         </div>
       </div>
-      <div class="col-md-12 text-berjalan" >
-        <marquee behavior="" direction="left">Running Text</marquee>
-      </div>
-
+      
+    
     <form name="frmEdit" action="<?php echo $_SERVER["PHP_SELF"]?>" method="POST" class="">
     <!-- row -->
     
      <div class="clearfix"></div>
      <div>
+     <input type="hidden" id="reset" name="reset" value="">
      <input type="hidden" id="id_poli" name="id_poli" value="<?=$_GET['id_poli']?>">
      <input type="hidden" id="id_ruang" name="id_ruang" value="<?=$_GET['id']?>">
      <input type="hidden" id="id_dokter"  value="">
@@ -159,34 +90,33 @@
 
       <!-- Sound -->  
       <div>
-        <audio id="myAudio"  src="assets/sound/1.ogg"></audio>
+        <audio id="myAudio"  src="1.ogg"></audio>
       </div>
       <!-- Sound -->
-    <!-- Bootstrap -->
-    <!-- <script src="assets/js/bootstrap.bundle.min.js"></script> -->
-   <!-- AdminLTE App -->
-    <!-- <script src="assets/js/adminlte.min.js"></script> -->
-    <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+
+
+     <script type="text/javascript" src="jquery.min.js"></script>
+     <script type="text/javascript" src="bootstraps/bootstrap.min.js"></script>
       <script>
 
         
-        // function reset(){
-        //   $('#reset').val('oke');
-        // }
-        // function blinkFont()
-        // {
-        // $(".blink-on").css("color","blue");
-        // $(".blink-on").css("background-color","white");
-        // setTimeout("setblinkFont()",500)
-        // }
+        function reset(){
+          $('#reset').val('oke');
 
-        // function setblinkFont()
-        // {
-        // $(".blink-on").css("color","white");
-        // $(".blink-on").css("background-color","blue");
-        // setTimeout("blinkFont()",500)
-        // }
+        }
+        function blinkFont()
+        {
+        $(".blink-on").css("color","blue");
+        $(".blink-on").css("background-color","white");
+        setTimeout("setblinkFont()",500)
+        }
 
+        function setblinkFont()
+        {
+        $(".blink-on").css("color","white");
+        $(".blink-on").css("background-color","blue");
+        setTimeout("blinkFont()",500)
+        }
 
         /*Tiap 10 detik Refresh  */
         $(document).ready(function() {
@@ -196,8 +126,6 @@
               ambil_data_next();
               ambil_data_layani();
             }, 10000);
-            // $('#id_ruang').val('1');
-            // $('#id_poli').val('9');
 
           });
         
@@ -245,6 +173,7 @@
                   }else{
                     var no_antrian = nilai.no_antrian_pasien;
                   }
+
                   
                   $('#no_antrian_next').html(`Antrian No. <b>${no_antrian} </b>`)
              
@@ -257,7 +186,7 @@
           function ambil_sedang_layani() {
             var id_poli = $('#id_poli').val();
             var id_dokter = $('#id_dokter').val();
-            $.getJSON(`get_sedang_dilayani.php?id_poli=${id_poli}&id_dokter=${id_dokter}`, function(nilai) {
+            $.getJSON(`get_sedang_layani.php?id_poli=${id_poli}&id_dokter=${id_dokter}`, function(nilai) {
               // console.log(nilai.no_antrian_pasien);
                 if(nilai){
 
@@ -268,7 +197,10 @@
                   }else{
                     var no_antrian = nilai.no_antrian_pasien;
                   }
+
+                  
                   $('#no_antrian').html(`Antrian No. <b>${no_antrian} </b>`)
+             
                 }else{
                   $('#no_antrian').html(`--`)
                 }
@@ -285,6 +217,7 @@
                     $('#id_dokter').val(nilai.usr_id);
                     var lokasi ='<?= $lokasi_foto?>';
                     var img = lokasi+''+nilai.foto;
+
                     $('#foto_dokter').attr('src',img );
 
                   }else{
@@ -306,11 +239,18 @@
             var id_dokter = $('#id_dokter').val();
             $.getJSON(`get_sudah_dilayani.php?id_poli=${id_poli}&id_dokter=${id_dokter}`, function(nilai) {
                 if(nilai){
+
                   $('#jml_selesai').html(`${nilai.jml}`)
+             
                 }
             });
               
           }
      </script>
   </body>
+  <!-- <footer>
+    <div class="text-right lisensi">
+    <a href="http://www.freepik.com">Designed by Freepik</a>
+    </div>
+  </footer> -->
 </html>

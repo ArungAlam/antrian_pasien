@@ -1,4 +1,4 @@
- <?php
+<?php
   require_once("../penghubung.inc.php");
   require_once($LIB."login.php");
   require_once($LIB."encrypt.php");
@@ -13,9 +13,10 @@
   $depId = "9999999";
 
   // KONFIHURASI
-  $sql = "select * from global.global_departemen where dep_id =".QuoteValue(DPE_CHAR,$depId);
+  $sql = "select * from global.global_departemen ";
   $rs = $dtaccess->Execute($sql);
   $konfigurasi = $dtaccess->Fetch($rs);
+ $var500 =  $konfigurasi["dep_no_urut_antrian_loket_empat"]; //pasien mulai 500
 
   $bg = $ROOT."/gambar/img_cfg/".$konfigurasi["dep_logo"];
 
@@ -78,29 +79,41 @@
       }
 
       function data() {
-        $.get('data_antrian.php', function(data) {
+        $.get('data_antrian_baru.php', function(data) {
           console.log(data);
           var text = data.split("-");
-					if(text[1] == ''){ delay = 2000; }else{ delay = 11000 ;};
+          console.log(text[1]);
+					if(text[2] == ''){ delay = 2000; }else{ delay = 11000 ;};
 					console.log(delay);
-          if (text[1] == 'A' || text[1] == 'D') {
-						$('#asuransi').html(`${text[1]}${text[2]} ` );
-						$('#ket_asuransi').html(`di Loket ${text[4]}` );
-					}else if (text[1] == 'B' || text[1] == 'E') {
-						$('#bpjs').html(`${text[1]}${text[2]} ` );
-						$('#ket_bpjs').html(`di Loket ${text[4]}` );
-					}
-          else if (text[1] == 'C' || text[1] == 'F') {
-						$('#priority').html(`${text[1]}${text[2]} ` );
-						$('#ket_priority').html(`di Loket ${text[4]}` );
-					}else if (text[1] == 'J') {
-						$('#jkn_mobile').html(`${text[1]}${text[2]} ` );
-						$('#ket_jkn_mobile').html(`di Loket ${text[4]}` );
-					}
+          // if (text[1] == 'A' || text[1] == 'D') {
+					// 	$('#asuransi').html(`${text[1]}${text[2]} ` );
+					// 	$('#ket_asuransi').html(`di Loket ${text[4]}` );
+					// }else if (text[1] == 'B' || text[1] == 'E') {
+					// 	$('#bpjs').html(`${text[1]}${text[2]} ` );
+					// 	$('#ket_bpjs').html(`di Loket ${text[4]}` );
+					// }
+          // else if (text[1] == 'C' || text[1] == 'F') {
+					// 	$('#priority').html(`${text[1]}${text[2]} ` );
+					// 	$('#ket_priority').html(`di Loket ${text[4]}` );
+					// }else if (text[1] == 'J') {
+					// 	$('#jkn_mobile').html(`${text[1]}${text[2]} ` );
+					// 	$('#ket_jkn_mobile').html(`di Loket ${text[4]}` );
+					// }
+            var int_nomer= parseInt(text[1]);
+          if(int_nomer > 500){
+            /* loket 4  */
+            $('#l4').html(`${text[1]}` );
+						$('#ket_l4').html(`di Loket ${text[3]}` );
 
-          if (text[3] == 'n') {
+          }else if(int_nomer  > 0){
+            /* loket 1 */
+            $('#l1').html(`${text[1]}` );
+						$('#ket_l1').html(`di Loket ${text[3]}` );
+          }
+
+          if (text[2] == 'n') {
             // var isi =  text[1]+text[2];
-            var isi =  `${text[2]}`;
+            var isi =  `${text[1]}`;
 						console.log("cek "+text[1]);
 						console.log("cek2 "+text[2]);
 						var terbilang1 = terbilang(isi).trim();
@@ -108,7 +121,7 @@
             // var list_panggil = ['suara/(.wav', 'suara/-.wav'];
             var list_panggil = ['suara/dingdong.wav', 'suara/-.wav'];
 						/* panggil huruf */
-						list_panggil.push('suara/'+text[1]+'.wav');
+						// list_panggil.push('suara/'+text[1]+'.wav');
 						/* panggil 0 */
 						// 	while(isi.indexOf("0") == 0){
 						// 	 list_panggil.push('suara/0.wav');
@@ -122,7 +135,7 @@
             });
 						console.log(hasil);
             list_panggil.push('suara/diloket.wav');
-            list_panggil.push('suara/'+text[4]+'.wav');
+            list_panggil.push('suara/'+text[3]+'.wav');
             // list_panggil.push('suara/).wav');
 
             console.log(list_panggil);
@@ -144,8 +157,8 @@
 				data();
 				
         $('#loaddiv-1').fadeOut('slow').fadeIn("slow");
-        $('#loaddiv-2').fadeOut('slow').fadeIn('slow');
-        $('#loaddiv-3').fadeOut('slow').fadeIn('slow');
+        // $('#loaddiv-2').fadeOut('slow').fadeIn('slow');
+        // $('#loaddiv-3').fadeOut('slow').fadeIn('slow');
         $('#loaddiv-4').fadeOut('slow').fadeIn("slow");
 			
 				chkh = setInterval(chk_fn, delay);
@@ -286,16 +299,16 @@
           <td width="35%" style="padding-left: 25px; padding-top: 25px; padding-right: 25px">
             <div id="loaddiv-1" align="center" class="nomor">
               <div width="100%">
-                <h3> BPJS</h3>
+                <h3> LOKET 1</h3>
                 <font color='black' align="center">
-                  <div class="nam" id="bpjs">-</div>
+                  <div class="nam" id="l1">-</div>
                 </font>
               </div>
-							<div class="ket" id="ket_bpjs">-</div>
+							<div class="ket" id="l1">-</div>
             </div>
-            <div id="loaddiv-2" align="center" class="nomor">
+            <!-- <div id="loaddiv-2" align="center" class="nomor">
               <div width="100%">
-                <h3> PRIORITY</h3>
+                <h3> Loket 2</h3>
                 <font color='black' align="center">
                   <div class="nam" id="priority">-</div>
                 </font>
@@ -304,22 +317,22 @@
             </div> 
             <div id="loaddiv-3" align="center" class="nomor">
               <div width="100%">
-                <h3> ASURANSI</h3>
+                <h3> Loket 3</h3>
                 <font color='black' align="center">
                   <div class="nam" id="asuransi">-</div>
                 </font>
               </div>
 							<div class="ket" id="ket_asuransi">-</div>
 							
-            </div>
+            </div> -->
             <div id="loaddiv-4" align="center" class="nomor">
               <div width="100%">
-                <h3> JKN MOBILE</h3>
+                <h3> Loket 4</h3>
                 <font color='black' align="center">
-                  <div class="nam" id="jkn_mobile">-</div>
+                  <div class="nam" id="l4">-</div>
                 </font>
               </div>
-								<div class="ket" id="ket_jkn_mobile">-</div>
+								<div class="ket" id="l4">-</div>
             </div>
           </td>
           <td width="65%" style="align-content: center;padding-right: 25px">

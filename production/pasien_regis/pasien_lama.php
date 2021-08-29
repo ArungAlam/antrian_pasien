@@ -38,33 +38,34 @@ $sql_perusahaan = "SELECT perusahaan_id, perusahaan_nama FROM global.global_peru
 $dataPerusahaan = $dtaccess->FetchAll($sql_perusahaan);
 
 if ($_POST['simpan']) {
-  if ($_POST['jenis_pasien'] == '5') {
-    require "../sep/cek_bpjs.php";
+   if ($_POST['jenis_pasien'] == '5') {
+     /*  cek rujukan dulu */
+    require "../bpjs/cari-rujukan2.php";
 
     if ($status_bpjs == 200) {
-      //   require "../sep/cek_rujukan.php";
+       require "../sep/sys/cek-rujukan.php?tipe_param=1&rujukan_asalRujukan_=1&rujukan_noRujukan_=".$_POST['no_rujukan'];
 
-      // if ($status_rujukan == 200) {
-      require "../sep/tambah-sep.php";
+       if ($status_rujukan == 200) {
+          require "../sep/sys/tambah-sep.php";
 
-      if ($status_sep != 200) {
+          if ($status_sep != 200) {
+            echo "<pre>";
+            print_r($status_sep . ' - ' . $pesan_sep);
+            echo "</pre>";
+            exit();
+          }
+        } else {
+          echo "<pre>";
+          print_r ($status_rujukan.' - '.$pesan_rujukan);
+          echo "</pre>";
+          exit();
+        }
+      } else {
         echo "<pre>";
-        print_r($status_sep . ' - ' . $pesan_sep);
+        print_r($status_bpjs . ' - ' . $pesan_bpjs);
         echo "</pre>";
         exit();
       }
-      // } else {
-      //   echo "<pre>";
-      //   print_r ($status_rujukan.' - '.$pesan_rujukan);
-      //   echo "</pre>";
-      //   exit();
-      // }
-    } else {
-      echo "<pre>";
-      print_r($status_bpjs . ' - ' . $pesan_bpjs);
-      echo "</pre>";
-      exit();
-    }
   }
 
   $birthday = $_POST['tgl_lahir'];
@@ -447,17 +448,18 @@ if ($_POST['simpan']) {
     unset($dbValue);
     unset($dbKey);
   ?>
-    <!-- <script>
+    <script>
       <?php if ($_POST['jenis_pasien'] == '5') { ?>
-        window.open('cetak_sep.php?id=<?= $regId ?>', '_blank');
+        // window.open('cetak_sep.php?id=<?= $regId ?>', '_blank');
+        window.open('../sep/print-sep.php?id=<?= $regId ?>', '_blank');
       <?php } else { ?>
-        window.open('cetak_pasien_lama.php?id=<?= $regId ?>', '_blank');
+        window.open('cetak_pasien_lama.php?id_reg=<?= $regId ?>', '_blank');
       <?php } ?>
       window.location.href = "antri_tambah.php";
-    </script> -->
+    </script>
 <?php
   }
-  header("Location: antri_tambah.php");
+  // header("Location: antri_tambah.php");
 }
     $sql = "select dep_konf_reg_no_rm_depan, dep_konf_reg_banyak, dep_konf_reg_ulang, dep_kode_prop ,dep_panjang_kode_pasien from global.global_departemen";
     $konf = $dtaccess->Fetch($sql);

@@ -40,10 +40,11 @@
 
  	/* KIRIM */
  	$ch = curl_init($url);
+  curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE); 
+
   curl_setopt($ch, CURLOPT_HTTPHEADER, $arrheader);
   // curl_setopt($ch, CURLOPT_POST, TRUE); // POST
   curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET"); // SELAIN POST
-  curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE); 
   // curl_setopt($ch, CURLOPT_POSTFIELDS, $isi); // ISI   
 
   $response = curl_exec($ch);
