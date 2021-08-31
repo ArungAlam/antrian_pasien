@@ -10,8 +10,23 @@
  $dtaccess = new DataAccess();
  $id_ruang = $_GET['id'];
 
- ?>
+  $sql = "select * from global.global_departemen where dep_id =".QuoteValue(DPE_CHAR,$depId);
+  $rs = $dtaccess->Execute($sql);
+  $konfigurasi = $dtaccess->Fetch($rs);
 
+  $bg = $ROOT."/gambar/img_cfg/".$konfigurasi["dep_logo"];
+
+  $sql= "select * from global.global_video_antrian order by urutan asc";
+  $video = $dtaccess->Fetch($sql);
+
+  $videoSrc = $video['video_antrian_nama'];
+  $videopertama =  $video['video_antrian_id'];
+
+  $sql= "select * from global.global_video_antrian order by urutan asc";
+  $videos = $dtaccess->FetchAll($sql);
+
+ ?>
+ 
 <!DOCTYPE html>
 <html lang="en">
     <link rel="stylesheet" type="text/css" href="assets/css/box_exp.css">
@@ -45,10 +60,10 @@
 
             <div class="col-md-2">
               <div class="col">
-               <a class="headline-poli">00:00:00</a>
+               <a class="headline-poli" id="jam">00:00:00</a>
               </div>
               <div class="col">
-               <a class="headline-tgl">15 AGUSTUS 2021</a>
+               <a class="headline-tgl" id="day">15 AGUSTUS 2021</a>
               </div>
             </div>
 
@@ -74,15 +89,8 @@
           </div>
         </div>
         <div class="col-md">
-                    <video controls
-                width="100%"
-                height="100%"
-                muted>
-                <source src="/media/cc0-videos/flower.webm"
-                        type="video/webm">
-                <source src="/media/cc0-videos/flower.mp4"
-                        type="video/mp4">
-                This browser does not support the HTML5 video element.
+            <video id="myVideo" controls autoplay style="width: 100%; max-height:550px" >
+              <source  id="mp4Source" src="<?php echo $videoSrc?>" type="video/mp4">
             </video>
         </div>
       </div>
@@ -144,18 +152,62 @@
      <div class="clearfix"></div>
      <div>
      </div>
+
      <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+     <script type="text/javascript" src="assets/js/moment.js"></script>
      <script>
 
         /*Tiap 5 detik Refresh  */
         $(document).ready(function() {
+            
+            /* antrian_poli  */
             setInterval(function() {
-
               get_antrian_all();
-              
             }, 5000);
+            /* konfig video */
+            var vid = document.getElementById("myVideo");
+                vid.muted = false;
+                  console.log("bersuara"); 
+            setTimeout(() => {
+              console.log("muted");
+                  vid.muted = true;
+						}, 300);
+
+
+            /* moment js */
+            setInterval(() => {
+              var now = moment();
+              var day = now.format('Do MMMM YYYY')
+              var jam = now.format('HH:mm:ss');
+              $('#jam').html(jam);
+              $('#day').html(day);
+					
+			      });
 
           });
+
+          var videos = [];
+          <?php foreach ($videos as $key => $value) { ?>
+            videos.push('<?=$value['video_antrian_nama']?>');
+          <?php } ?>
+          var count = 0 ;
+          var max_list = videos.length - 1; 
+          var player = document.getElementById('myVideo');
+          var mp4Vid = document.getElementById('mp4Source');
+          player.addEventListener('ended', myHandler, false);
+
+          function myHandler(e) {
+            if (!e) {
+              e = window.event;
+            }
+            count++;
+            mp4Vid.src = videos[count] ;
+            if(count == max_list){
+              count = -1;
+            }
+            player.load();
+            player.play();
+          }
         
         
           function get_antrian_all() {
