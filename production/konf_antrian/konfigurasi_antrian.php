@@ -438,7 +438,7 @@ function CheckShift3(frm)
 						            </div>
                       </div>
 					  
-					  <div class="form-group">
+					            <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Footer Bawah Antrian
                         </label>
                         <div class="col-md-8 col-sm-8 col-xs-12">

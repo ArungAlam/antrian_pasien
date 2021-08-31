@@ -56,6 +56,7 @@
 		              <? if ($auth->IsAllowed("man_ganti_password", PRIV_READ)) { ?><li><a href="<?php echo $ROOT; ?>antrian_poli/all_monitor.php" target="_blank" style="font-size:15px">All Monitor</a></li><? } ?>
 		              <? if ($auth->IsAllowed("man_ganti_password", PRIV_READ)) { ?><li><a href="<?php echo $ROOT; ?>antrian_poli/ruang.php" target="_blank" style="font-size:15px">Setup Ruangan</a></li><? } ?>
 		              <? if ($auth->IsAllowed("man_ganti_password", PRIV_READ)) { ?><li><a href="<?php echo $ROOT; ?>master_ruangan/ruangan_view.php" target="_blank" style="font-size:15px">Master Ruangan</a></li><? } ?>
+		              <? if ($auth->IsAllowed("man_ganti_password", PRIV_READ)) { ?><li><a href="<?php echo $ROOT; ?>konf_iklan/konf_iklan.php" target="_blank" style="font-size:15px">konf iklan</a></li><? } ?>
 		            </ul>
 		          </li>
 		          <li><a style="font-size:15px"><i class="fa fa-money"></i>&nbsp; Antrian Penunjang <span class="fa fa-chevron-down"></span></a>

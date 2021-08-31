@@ -238,9 +238,4 @@
           
      </script>
   </body>
-  <!-- <footer>
-    <div class="text-right lisensi">
-    <a href="http://www.freepik.com">Designed by Freepik</a>
-    </div>
-  </footer> -->
 </html>

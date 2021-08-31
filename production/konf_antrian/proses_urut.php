@@ -24,9 +24,15 @@
 		/* deklasri */
 			$id_video = $_POST['id'];
 			$urut = $_POST['urut'];
+			$jam = $_POST['jam'];
+			$hari = $_POST['hari'];
 		/* update urutan */
-				$sql="update global.global_video_antrian set urutan = '$urut'
-								where  video_antrian_id = '$id_video'";
+				$sql="update global.global_video_antrian set 
+                iklan_tayang_urut = '$urut',
+                iklan_tayang_jam  ='$jam',
+                iklan_tayang_hari  ='$hari',
+
+								where  iklan_id = '$id_video'";
 				$dtaccess->Execute($sql);
 	
 
